@@ -25,6 +25,6 @@ class vyatta (
   concat::fragment { "system_trailer":
     target  => "${vyatta::path}",
     content => template('vyatta/system_trailer.erb'),
-    order   => 29,
+    order   => 39,
   }
 }

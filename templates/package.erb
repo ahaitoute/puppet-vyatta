@@ -1,0 +1,8 @@
+        repository <%= repository %> {
+            components <%= components %>
+            distribution <%= distribution %>
+<% if !username.empty? and !password.empty? %>            username <%= username %>
+            password "<%= password %>"
+<% end -%>
+            url <%= url %>
+        }
