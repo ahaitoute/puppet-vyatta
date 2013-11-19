@@ -1,6 +1,7 @@
 class vyatta (
   $path = '/config/config.puppet',
-  $host_name = $hostname
+  $host_name = $hostname,
+  $time_zone = $timezone
 ) {
   concat { $path:
     owner => root,
