@@ -1,7 +1,7 @@
 define vyatta::interfaces (
   $ensure = present,
   $ethernet = $name,
-  $address = 'dhcp',
+  $address = undef,
   $duplex = 'auto',
   $hw_id,
   $smp_affinity = 'auto',
