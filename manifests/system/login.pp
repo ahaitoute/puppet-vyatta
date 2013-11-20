@@ -6,18 +6,18 @@ define vyatta::system::login (
 ) {
   if ! (defined(Concat::Fragment['login_header'])) {
     concat::fragment { 'login_header':
-      target  => "${vyatta::path}",
+      target  => "${vyatta::configuration}",
       content => template('vyatta/login_header.erb'),
       order   => 21,
     }
     concat::fragment { 'login_trailer':
-      target  => "${vyatta::path}",
+      target  => "${vyatta::configuration}",
       content => template('vyatta/login_trailer.erb'),
       order   => 23,
     }
   }
   concat::fragment { "login_${user}":
-    target  => "${vyatta::path}",
+    target  => "${vyatta::configuration}",
     content => template('vyatta/login.erb'),
     order   => 22,
   }

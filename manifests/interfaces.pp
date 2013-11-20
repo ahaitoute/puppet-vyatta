@@ -8,17 +8,17 @@ define vyatta::interfaces (
   $speed = 'auto'
 ) {
 /*  concat::fragment { "interfaces_header":
-    target  => "${vyatta::path}",
+    target  => "${vyatta::configuration}",
     content => template('vyatta/interfaces_header.erb'),
     order   => 10,
   }*/
   concat::fragment { "interfaces_${ethernet}":
-    target  => "${vyatta::path}",
+    target  => "${vyatta::configuration}",
     content => template('vyatta/interfaces.erb'),
     order   => 11,
   }
 /*  concat::fragment { "interfaces_trailer":
-    target  => "${vyatta::path}",
+    target  => "${vyatta::configuration}",
     content => template('vyatta/interfaces_trailer.erb'),
     order   => 19,
   }*/
