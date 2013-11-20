@@ -9,7 +9,7 @@ class vyatta (
     owner => root,
     group => root,
     mode  => '0644',
-#    notify => Exec["vyatta_loadFile.sh ${configuration}"]
+    notify => Exec["vyatta_loadFile.sh ${configuration}"]
   }
   concat::fragment { "interfaces_header":
     target  => "${vyatta::configuration}",
