@@ -1,5 +1,9 @@
 #!/bin/bash
 # Snippet
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+vyatta_sbindir=/opt/vyatta/sbin
+
 SHELL_API=${vyatta_sbindir}/my_cli_shell_api
 
 SET=${vyatta_sbindir}/my_set
