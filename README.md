@@ -1,8 +1,7 @@
 puppet-vyatta
 =============
-# Generates and installs Vyatta configuration.
 
-Puppet Module for Simple Text edits
+Generates and installs Vyatta configuration.
 
 Tested on Vyatta Core 6.6 R1, patches are welcome.
 
