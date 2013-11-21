@@ -75,6 +75,14 @@ Define the system.
       level => 'debug'
     }
 
+Define the service.
+
+    vyatta::service::https { 'https':
+    }
+    vyatta::service::ssh { 'ssh':
+      port => 22
+    }
+
 ## Contributing
 
 1. Fork it
