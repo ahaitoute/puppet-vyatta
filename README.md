@@ -75,6 +75,12 @@ Define the system.
     vyatta::system::syslog::global { 'protocols':
       level => 'debug'
     }
+    vyatta::system::syslog::file { 'kernel-log':
+      archive_files => 10,
+      archive_size => 10485760,
+      facility => 'kern',
+      facility_level => 'info'
+    }
 
 Define the service.
 
