@@ -22,7 +22,8 @@ Define the server.
 
     class { 'vyatta':
       configuration => '/home/vyatta/configuration',
-      host_name => 'vyatta'
+      host_name => 'vyatta',
+      time_zone => 'Europe/Amsterdam'
     }
 
 ### vyatta::interfaces
