@@ -1,5 +1,8 @@
     ethernet <%= ethernet %> {
-        address <%= address %>
+<% if !address.empty? -%>
+<% Array(address).each do |item| %>        address <%= item %>
+<% end -%>
+<% end -%>
         duplex <%= duplex %>
         hw-id <%= hw_id %>
         smp_affinity <%= smp_affinity %>
