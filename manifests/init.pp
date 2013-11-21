@@ -71,12 +71,12 @@ class vyatta (
     mode   => '0744',
     source => 'puppet:///modules/vyatta/vyatta_snippet.sh'
   }
-/*  exec { "vyatta_loadFile.sh ${configuration}":
+  exec { "vyatta_loadFile.sh ${configuration}":
     path        => $script_dir,
 #    environment => 'PATH=$PATH:/usr/local/bin:/usr/bin:/bin',
     logoutput   => true,
     subscribe   => Concat[$configuration],
     refreshonly => true,
     require     => File["${script_dir}/vyatta_loadFile.sh"]
-  }*/
+  }
 }
