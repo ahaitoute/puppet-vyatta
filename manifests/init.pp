@@ -31,6 +31,16 @@ class vyatta (
     content => template('vyatta/system_trailer.erb'),
     order   => 39,
   }
+  concat::fragment { "service_header":
+    target  => "${vyatta::configuration}",
+    content => template('vyatta/service_header.erb'),
+    order   => 40,
+  }
+  concat::fragment { "service_trailer":
+    target  => "${vyatta::configuration}",
+    content => template('vyatta/service_trailer.erb'),
+    order   => 59,
+  }
   file { "${script_dir}/vyatta_end_session.sh":
     ensure => present,
     owner  => root,
