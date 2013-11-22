@@ -42,6 +42,8 @@ Define the interfaces.
       address => '10.0.0.1/32'
     }
 
+### vyatta::system
+
 Define the system.
 
     vyatta::system::login { 'vyatta':
@@ -82,12 +84,20 @@ Define the system.
       facility_level => 'info'
     }
 
+### vyatta::service
+
 Define the service.
 
     vyatta::service::https { 'https':
     }
     vyatta::service::ssh { 'ssh':
       port => 22
+    }
+
+### vyatta::protocols
+
+    vyatta::protocols::ospf::area { '0.0.0.0':
+      network => ['192.168.1.0/24','192.168.2.0/24']
     }
 
 ## Contributing
