@@ -99,6 +99,10 @@ Define the service.
     vyatta::protocols::ospf::area { '0.0.0.0':
       network => ['192.168.1.0/24','192.168.2.0/24']
     }
+    vyatta::protocols::ospf::parameters { '192.168.0.1':
+      abr_type => 'standard',
+      opaque_lsa => true
+    }
 
 ## Contributing
 
