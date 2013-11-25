@@ -5,7 +5,7 @@ define vyatta::protocols::ospf::parameters (
   $router_id = $name
 ) {
   if ! (defined(Concat::Fragment['ospf_parameters_${router_id}'])) {
-    include vyatta::protocols::ospf
+    include vyatta::protocols::ospf_header
   }
 
   concat::fragment { "ospf_parameters_${router_id}":

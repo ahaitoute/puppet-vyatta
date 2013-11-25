@@ -4,7 +4,7 @@ define vyatta::protocols::ospf::area (
   $network
 ) {
   if ! (defined(Concat::Fragment['ospf_area_${area}'])) {
-    include vyatta::protocols::ospf
+    include vyatta::protocols::ospf_header
   }
   concat::fragment { "ospf_area_${area}":
     target  => "${vyatta::configuration}",

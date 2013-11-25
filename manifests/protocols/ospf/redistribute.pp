@@ -6,7 +6,7 @@ define vyatta::protocols::ospf::redistribute (
   $route_map = ''
 ) {
   if ! (defined(Concat::Fragment['ospf_parameters_${router_id}'])) {
-    include vyatta::protocols::ospf
+    include vyatta::protocols::ospf_header
   }
   if ! (defined(Concat::Fragment['ospf_redistribute_header'])) {
     concat::fragment { 'ospf_redistribute_header':
