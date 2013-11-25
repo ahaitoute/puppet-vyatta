@@ -3,7 +3,7 @@ class vyatta (
   $configuration = '/config/config.puppet',
   $host_name = $hostname,
   $time_zone = $timezone,
-  $vyatta_path = '/opt/vyatta/sbin'
+  $vyatta_prefix = '/opt/vyatta'
 ) {
   concat { $configuration:
     owner => root,
@@ -83,7 +83,7 @@ class vyatta (
   }
   exec { "vyatta_loadFile.sh ${configuration}":
     path        => $script_dir,
-    environment => ['vyatta_prefix=/opt/vyatta','vyatta_htmldir=/opt/vyatta/share/html','vyatta_datadir=/opt/vyatta/share','vyatta_op_templates=/opt/vyatta/share/vyatta-op/templates','vyatta_sysconfdir=/opt/vyatta/etc','vyatta_sharedstatedir=/opt/vyatta/com','vyatta_sbindir=/opt/vyatta/sbin','vyatta_cfg_templates=/opt/vyatta/share/vyatta-cfg/templates','VYATTA_CFG_GROUP_NAME=vyattacfg','vyatta_bindir=/opt/vyatta/bin','VYATTA_USER_LEVEL_DIR=/opt/vyatta/etc/shell/level/admin','vyatta_libdir=/opt/vyatta/lib','vyatta_localstatedir=/opt/vyatta/var','vyatta_libexecdir=/opt/vyatta/libexec','vyatta_datarootdir=/opt/vyatta/share','vyatta_configdir=/opt/vyatta/config','vyatta_infodir=/opt/vyatta/share/info','vyatta_localedir=/opt/vyatta/share/locale'],
+    environment => ["vyatta_prefix=${vyatta_prefix}","vyatta_htmldir=${vyatta_prefix}/share/html","vyatta_datadir=${vyatta_prefix}/share","vyatta_op_templates=${vyatta_prefix}/share/vyatta-op/templates","vyatta_sysconfdir=${vyatta_prefix}/etc","vyatta_sharedstatedir=${vyatta_prefix}/com","vyatta_sbindir=${vyatta_prefix}/sbin","vyatta_cfg_templates=${vyatta_prefix}/share/vyatta-cfg/templates",'VYATTA_CFG_GROUP_NAME=vyattacfg',"vyatta_bindir=${vyatta_prefix}/bin","VYATTA_USER_LEVEL_DIR=${vyatta_prefix}/etc/shell/level/admin","vyatta_libdir=${vyatta_prefix}/lib","vyatta_localstatedir=${vyatta_prefix}/var","vyatta_libexecdir=${vyatta_prefix}/libexec","vyatta_datarootdir=${vyatta_prefix}/share","vyatta_configdir=${vyatta_prefix}/config","vyatta_infodir=${vyatta_prefix}/share/info","vyatta_localedir=${vyatta_prefix}/share/locale"],
     logoutput   => true,
     subscribe   => Concat[$configuration],
     refreshonly => true,
