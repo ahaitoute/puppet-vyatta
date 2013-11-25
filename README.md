@@ -96,12 +96,21 @@ Define the service.
 
 ### vyatta::protocols
 
+Define the protocols.
+
     vyatta::protocols::ospf::area { '0.0.0.0':
       network => ['192.168.1.0/24','192.168.2.0/24']
     }
     vyatta::protocols::ospf::parameters { '192.168.0.1':
       abr_type => 'standard',
       opaque_lsa => true
+    }
+    vyatta::protocols::ospf::redistribute { 'connected':
+      metric => 1,
+      metric_type => 1
+    }
+    vyatta::protocols::ospf::redistribute { 'bgp':
+      metric => 2,
     }
 
 ## Contributing

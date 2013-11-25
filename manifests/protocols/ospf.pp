@@ -8,7 +8,7 @@ class vyatta::protocols::ospf {
     concat::fragment { 'ospf_trailer':
       target  => "${vyatta::configuration}",
       content => template('vyatta/ospf_trailer.erb'),
-      order   => 63,
+      order   => 66,
     }
   }
 }
