@@ -1,4 +1,4 @@
-class vyatta::system::syslog {
+class vyatta::system::syslog_header {
   if ! (defined(Concat::Fragment['syslog_header'])) {
     concat::fragment { 'syslog_header':
       target  => "${vyatta::configuration}",
@@ -8,7 +8,7 @@ class vyatta::system::syslog {
     concat::fragment { 'syslog_trailer':
       target  => "${vyatta::configuration}",
       content => template('vyatta/syslog_trailer.erb'),
-      order   => 34,
+      order   => 37,
     }
   }
 }

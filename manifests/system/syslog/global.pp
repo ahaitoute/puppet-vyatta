@@ -4,7 +4,7 @@ define vyatta::system::syslog::global (
   $level
 ) {
   if ! (defined(Concat::Fragment['syslog_global_header'])) {
-    include vyatta::system::syslog
+    include vyatta::system::syslog_header
 
     concat::fragment { 'syslog_global_header':
       target  => "${vyatta::configuration}",

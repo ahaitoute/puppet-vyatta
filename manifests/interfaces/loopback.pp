@@ -6,6 +6,6 @@ define vyatta::interfaces::loopback (
   concat::fragment { "loopback_${loopback}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/loopback.erb'),
-    order   => 12,
+    order   => 11,
   }
 }
