@@ -7,6 +7,9 @@ define vyatta::interfaces::ethernet (
   $smp_affinity = 'auto',
   $speed = 'auto'
 ) {
+
+  include vyatta
+
   concat::fragment { "interfaces_${ethernet}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/ethernet.erb'),
