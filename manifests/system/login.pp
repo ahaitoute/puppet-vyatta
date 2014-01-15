@@ -11,17 +11,17 @@ define vyatta::system::login (
     concat::fragment { 'login_header':
       target  => "${vyatta::configuration}",
       content => template('vyatta/login_header.erb'),
-      order   => 21,
+      order   => 501,
     }
     concat::fragment { 'login_trailer':
       target  => "${vyatta::configuration}",
       content => template('vyatta/login_trailer.erb'),
-      order   => 23,
+      order   => 503,
     }
   }
   concat::fragment { "login_${user}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/login.erb'),
-    order   => 22,
+    order   => 502,
   }
 }
