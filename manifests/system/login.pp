@@ -4,7 +4,7 @@ define vyatta::system::login (
   $encrypted_password,
   $key_name,
   $key_content,
-  $key,type,
+  $key_type,
   $level,
 ) {
   if ! (defined(Concat::Fragment['login_header'])) {
