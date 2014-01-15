@@ -1,10 +1,12 @@
         user <%= user %> {
             authentication {
                 encrypted-password <%= encrypted_password %>
+                <% if @key_name %>
                 public-keys <%= key_name %> {
                     key <%= key_content %>
                     type <%= key_type %>
                 }
+                <% end %>
             }
             level <%= level %>
         }
