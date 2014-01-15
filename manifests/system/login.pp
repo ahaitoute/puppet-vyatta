@@ -2,6 +2,9 @@ define vyatta::system::login (
   $ensure = present,
   $user = $name,
   $encrypted_password,
+  $key_name,
+  $key_content,
+  $key,type,
   $level,
 ) {
   if ! (defined(Concat::Fragment['login_header'])) {
