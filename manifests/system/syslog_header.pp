@@ -3,12 +3,12 @@ class vyatta::system::syslog_header {
     concat::fragment { 'syslog_header':
       target  => "${vyatta::configuration}",
       content => template('vyatta/syslog_header.erb'),
-      order   => 30,
+      order   => 513,
     }
     concat::fragment { 'syslog_trailer':
       target  => "${vyatta::configuration}",
       content => template('vyatta/syslog_trailer.erb'),
-      order   => 37,
+      order   => 518,
     }
   }
 }

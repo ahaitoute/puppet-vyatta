@@ -9,6 +9,6 @@ define vyatta::protocols::ospf (
   concat::fragment { "ospf_${ospf}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/ospf.erb'),
-    order   => 62,
+    order   => 602,
   }
 }

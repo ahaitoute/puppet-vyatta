@@ -23,6 +23,6 @@ define vyatta::system::syslog::file (
   concat::fragment { "syslog_file_${file}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/syslog_file.erb'),
-    order   => 34,
+    order   => 517,
   }
 }

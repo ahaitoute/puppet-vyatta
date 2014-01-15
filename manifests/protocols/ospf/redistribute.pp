@@ -12,18 +12,18 @@ define vyatta::protocols::ospf::redistribute (
     concat::fragment { 'ospf_redistribute_header':
       target  => "${vyatta::configuration}",
       content => template('vyatta/ospf_redistribute_header.erb'),
-      order   => 63,
+      order   => 603,
     }
     concat::fragment { 'ospf_redistribute_trailer':
       target  => "${vyatta::configuration}",
       content => template('vyatta/ospf_redistribute_trailer.erb'),
-      order   => 65,
+      order   => 605,
     }
   }
   concat::fragment { "ospf_redistribute_${route}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/ospf_redistribute.erb'),
-    order   => 64,
+    order   => 604,
   }
 }
 

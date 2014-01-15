@@ -6,6 +6,6 @@ define vyatta::service::ssh (
   concat::fragment { "ssh_${ssh}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/ssh.erb'),
-    order   => 41,
+    order   => 401,
   }
 }

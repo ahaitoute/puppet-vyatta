@@ -5,6 +5,6 @@ define vyatta::service::https (
   concat::fragment { "https_${https}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/https.erb'),
-    order   => 41,
+    order   => 401,
   }
 }

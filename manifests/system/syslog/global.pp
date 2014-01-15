@@ -9,17 +9,17 @@ define vyatta::system::syslog::global (
     concat::fragment { 'syslog_global_header':
       target  => "${vyatta::configuration}",
       content => template('vyatta/syslog_global_header.erb'),
-      order   => 31,
+      order   => 514,
     }
     concat::fragment { 'syslog_global_trailer':
       target  => "${vyatta::configuration}",
       content => template('vyatta/syslog_global_trailer.erb'),
-      order   => 33,
+      order   => 516,
     }
   }
   concat::fragment { "syslog_global_${facility}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/syslog_global.erb'),
-    order   => 32,
+    order   => 515,
   }
 }

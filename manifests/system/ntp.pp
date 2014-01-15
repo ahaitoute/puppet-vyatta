@@ -6,17 +6,17 @@ define vyatta::system::ntp (
     concat::fragment { 'ntp_header':
       target  => "${vyatta::configuration}",
       content => template('vyatta/ntp_header.erb'),
-      order   => 24,
+      order   => 505,
     }
     concat::fragment { 'ntp_trailer':
       target  => "${vyatta::configuration}",
       content => template('vyatta/ntp_trailer.erb'),
-      order   => 26,
+      order   => 507,
     }
   }
   concat::fragment { "ntp_${server}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/ntp.erb'),
-    order   => 25,
+    order   => 506,
   }
 }

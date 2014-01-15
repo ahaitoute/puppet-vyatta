@@ -14,42 +14,42 @@ class vyatta (
   concat::fragment { "interfaces_header":
     target  => "${vyatta::configuration}",
     content => template('vyatta/interfaces_header.erb'),
-    order   => 10,
+    order   => 200,
   }
   concat::fragment { "interfaces_trailer":
     target  => "${vyatta::configuration}",
     content => template('vyatta/interfaces_trailer.erb'),
-    order   => 19,
+    order   => 299,
   }
   concat::fragment { "system_header":
     target  => "${vyatta::configuration}",
     content => template('vyatta/system_header.erb'),
-    order   => 20,
+    order   => 500,
   }
   concat::fragment { "system_trailer":
     target  => "${vyatta::configuration}",
     content => template('vyatta/system_trailer.erb'),
-    order   => 39,
+    order   => 599,
   }
   concat::fragment { "service_header":
     target  => "${vyatta::configuration}",
     content => template('vyatta/service_header.erb'),
-    order   => 40,
+    order   => 400,
   }
   concat::fragment { "service_trailer":
     target  => "${vyatta::configuration}",
     content => template('vyatta/service_trailer.erb'),
-    order   => 59,
+    order   => 499,
   }
   concat::fragment { "protocols_header":
     target  => "${vyatta::configuration}",
     content => template('vyatta/protocols_header.erb'),
-    order   => 60,
+    order   => 600,
   }
   concat::fragment { "protocols_trailer":
     target  => "${vyatta::configuration}",
     content => template('vyatta/protocols_trailer.erb'),
-    order   => 79,
+    order   => 699,
   }
   file { "${script_dir}/vyatta_end_session.sh":
     ensure => present,

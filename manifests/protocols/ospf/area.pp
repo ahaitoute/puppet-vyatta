@@ -9,6 +9,6 @@ define vyatta::protocols::ospf::area (
   concat::fragment { "ospf_area_${area}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/ospf_area.erb'),
-    order   => 62,
+    order   => 602,
   }
 }

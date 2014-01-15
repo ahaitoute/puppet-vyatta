@@ -11,6 +11,6 @@ define vyatta::protocols::ospf::parameters (
   concat::fragment { "ospf_parameters_${router_id}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/ospf_parameters.erb'),
-    order   => 62,
+    order   => 602,
   }
 }

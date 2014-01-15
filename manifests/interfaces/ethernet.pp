@@ -13,6 +13,6 @@ define vyatta::interfaces::ethernet (
   concat::fragment { "interfaces_${ethernet}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/ethernet.erb'),
-    order   => 11,
+    order   => 201,
   }
 }
