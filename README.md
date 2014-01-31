@@ -22,6 +22,7 @@ Define the server.
 
     class { 'vyatta':
       configuration => '/home/vyatta/configuration',
+      gateway_address => '10.0.2.2',
       host_name => 'vyatta',
       time_zone => 'Europe/Amsterdam'
     }

@@ -1,3 +1,5 @@
 system {
     host-name <%= host_name %>
     time-zone <%= time_zone %>
+<% if @gateway_address %>    gateway-address <%= gateway_address %>
+<% end -%>

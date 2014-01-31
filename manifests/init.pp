@@ -1,6 +1,7 @@
 class vyatta (
   $script_dir = '/tmp',
   $configuration = '/config/config.puppet',
+  $gateway_address = undef,
   $host_name = $hostname,
   $time_zone = $timezone,
   $vyatta_prefix = '/opt/vyatta'
