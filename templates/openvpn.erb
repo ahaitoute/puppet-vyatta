@@ -1,8 +1,14 @@
     openvpn <%= openvpn %> {
         local-address <%= local_address %>
+<% if @local_port -%>
+        local-port <%= local_port %>
+<% end -%>
         mode <%= mode %>
         remote-address <%= remote_address %>
         remote-host <%= remote_host %>
+<% if @remote_port -%>
+       	remote-port <%= remote_port %>
+<% end -%>
 <% if @ca_cert_file && @cert_file && @key_file -%>
         tls {
             ca-cert-file <%= ca_cert_file %>
