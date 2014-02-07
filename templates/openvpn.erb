@@ -1,0 +1,16 @@
+    openvpn <%= openvpn %> {
+        local-address <%= local_address %>
+        mode <%= mode %>
+        remote-address <%= remote_address %>
+        remote-host <%= remote_host %>
+<% if @ca_cert_file && @cert_file && @key_file -%>
+        tls {
+            ca-cert-file <%= ca_cert_file %>
+            cert-file <%= cert_file %>
+            key-file <%= key_file %>
+<% if @role -%>
+            role <%= role %>
+<% end -%>
+        }
+<% end -%>
+    }

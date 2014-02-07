@@ -42,6 +42,16 @@ Define the interfaces.
     vyatta::interfaces::loopback { 'lo':
       address => '10.0.0.1/32'
     }
+    vyatta::interfaces::openvpn { 'vtun0':
+      local_address => '10.4.0.1',
+      mode => 'site-to-site',
+      remote_address => '10.4.0.2',
+      remote_host => '192.168.1.2',
+      ca_cert_file => '/config/auth/ca.crt',
+      cert_file => '/config/auth/vyatta.crt',
+      key_file => '/config/auth/vyatta.key',
+      role => 'active'
+    }
 
 ### vyatta::system
 
