@@ -44,9 +44,11 @@ Define the interfaces.
     }
     vyatta::interfaces::openvpn { 'vtun0':
       local_address => '10.4.0.1',
+      local_port => '5000',
       mode => 'site-to-site',
       remote_address => '10.4.0.2',
       remote_host => '192.168.1.2',
+      remote_port => '5001',
       ca_cert_file => '/config/auth/ca.crt',
       cert_file => '/config/auth/vyatta.crt',
       key_file => '/config/auth/vyatta.key',
