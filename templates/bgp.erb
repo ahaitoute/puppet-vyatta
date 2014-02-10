@@ -1,0 +1,25 @@
+    bgp <%= bgp %> {
+<% neighbors.each_pair do |key, value_hash| -%>
+        neighbor <%= value_hash['neighbor'] %> {
+            remote-as <%= value_hash['remote_as'] %>
+            update-source <%= value_hash['update_source'] %>
+        }
+<% end -%>
+<% networks.each_pair do |key, value_hash| -%>
+        network <%= value_hash['network'] %> {
+            <%- if value_hash['backdoor'] == true -%>
+            backdoor
+            <%- end -%>
+            <%- if value_hash['route_map'] -%>
+            route-map <%= value_hash['route_map'] %>
+            <%- end -%>
+        }
+<% end -%>
+<% if @parameters -%>
+        parameters {
+            <%- if @parameters['router_id'] -%>
+            router-id <%= parameters['router_id'] %>
+            <%- end -%>
+        }
+<% end -%>
+    }

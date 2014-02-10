@@ -114,6 +114,25 @@ Define the service.
 
 Define the protocols.
 
+#### vyatta::protocols::bgp
+
+    vyatta::protocols::bgp { '65000':
+      neighbors => {
+        neighbor1 => { 'neighbor' => '192.168.1.10', 'remote_as' => '65001', update_source => '192.168.1.1' },
+        neighbor2 => { 'neighbor' => '192.168.1.20', 'remote_as' => '65002', update_source => '192.168.1.1' }
+      },
+      networks => {
+        network1 => { 'network' => '192.168.1.0/24', 'backdoor' => true },
+        network2 => { 'network' => '192.168.2.0/24', 'route_map' => 'ROUTE-MAP' },
+        network3 => { 'network' => '192.168.3.0/24' }
+      },
+      parameters => {
+        'router_id' => '192.168.1.1'
+      }
+    }
+
+#### vyatta::protocols::ospf
+
     vyatta::protocols::ospf::area { '0.0.0.0':
       network => ['192.168.1.0/24','192.168.2.0/24']
     }
