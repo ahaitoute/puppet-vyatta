@@ -128,6 +128,13 @@ Define the protocols.
       },
       parameters => {
         'router_id' => '192.168.1.1'
+      },
+      redistributes => {
+        redistribute1 => { 'redistribute' => 'connected' },
+        redistribute2 => { 'redistribute' => 'kernel', 'metric' => '1' },
+        redistribute3 => { 'redistribute' => 'ospf', 'route_map' => 'ROUTE-MAP' },
+        redistribute4 => { 'redistribute' => 'rip', 'metric' => '1', 'route_map' => 'ROUTE-MAP' },
+        redistribute5 => { 'redistribute' => 'static' }
       }
     }
 

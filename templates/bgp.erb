@@ -22,4 +22,18 @@
             <%- end -%>
         }
 <% end -%>
+<% if @redistributes -%>
+        redistribute {
+  <%- redistributes.each_pair do |key, value_hash| -%>
+            <%= value_hash['redistribute'] %> {
+                <%- if value_hash['metric'] -%>
+                metric <%= value_hash['metric'] %>
+                <%- end -%>
+                <%- if value_hash['route_map'] -%>
+                route-map <%= value_hash['route_map'] %>
+                <%- end -%>
+            }
+  <%- end -%>
+        }
+<% end -%>
     }
