@@ -1,2 +1,42 @@
-<% Array(passive_interface).each do |item| %>        passive-interface <%= item %>
+    ospf {
+<% areas.each_pair do |key, value_hash| -%>
+        area <%= value_hash['area'] %> {
+  <%- Array(value_hash['network']).each do |item| -%>
+            network <%= item %>
+  <%- end -%>
+        }
 <% end -%>
+<% if @parameters -%>
+        parameters {
+            <%- if @parameters['abr_type'] -%>
+            router-id <%= parameters['abr_type'] %>
+            <%- end -%>
+            <%- if @parameters['router_id'] -%>
+            router-id <%= parameters['router_id'] %>
+            <%- end -%>
+        }
+<% end -%>
+<% if @redistributes -%>
+        redistribute {
+  <%- redistributes.each_pair do |key, value_hash| -%>
+            <%= value_hash['redistribute'] %> {
+                <%- if value_hash['metric'] -%>
+                metric <%= value_hash['metric'] %>
+                <%- end -%>
+                <%- if value_hash['metric_type'] -%>
+                metric <%= value_hash['metric_type'] %>
+                <%- end -%>
+                <%- if value_hash['route_map'] -%>
+                route-map <%= value_hash['route_map'] %>
+                <%- end -%>
+            }
+  <%- end -%>
+        }
+<% end -%>
+<% Array(passive_interface).each do |item| -%>
+        passive-interface <%= item %>
+<% end -%>
+<% Array(passive_interface_exclude).each do |item| -%>
+	passive-interface-exclude <%= item %>
+<% end -%>
+    }

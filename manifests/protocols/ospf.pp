@@ -1,14 +1,15 @@
 define vyatta::protocols::ospf (
   $ensure = present,
+  $areas,
   $ospf = $name,
-  $passive_interface = ''
+  $parameters = undef,
+  $passive_interface = undef,
+  $passive_interface_exclude = undef,
+  $redistributes = undef
 ) {
-  if ! (defined(Concat::Fragment['ospf_${ospf}'])) {
-    include vyatta::protocols::ospf_header
-  }
   concat::fragment { "ospf_${ospf}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/ospf.erb'),
-    order   => 602,
+    order   => 621,
   }
 }

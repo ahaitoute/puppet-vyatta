@@ -140,19 +140,23 @@ Define the protocols.
 
 #### vyatta::protocols::ospf
 
-    vyatta::protocols::ospf::area { '0.0.0.0':
-      network => ['192.168.1.0/24','192.168.2.0/24']
-    }
-    vyatta::protocols::ospf::parameters { '192.168.0.1':
-      abr_type => 'standard',
-      opaque_lsa => true
-    }
-    vyatta::protocols::ospf::redistribute { 'connected':
-      metric => 1,
-      metric_type => 1
-    }
-    vyatta::protocols::ospf::redistribute { 'bgp':
-      metric => 2,
+    vyatta::protocols::ospf { 'ospf':
+      areas => {
+        area1 => { 'area' => '0.0.0.0', 'network' => ['192.168.1.0/24','192.168.2.0/24'] }
+      },
+      parameters => {
+        'abr_type' => 'cisco',
+        'router_id' => '192.168.1.1'
+      },
+      redistributes => {
+        redistribute1 => { 'redistribute' => 'bgp' },
+        redistribute2 => { 'redistribute' => 'connected', 'metric' => '1' },
+        redistribute3 => { 'redistribute' => 'kernel', 'metric_type' => '2' },
+        redistribute4 => { 'redistribute' => 'rip', 'route_map' => 'ROUTE-MAP' },
+        redistribute5 => { 'redistribute' => 'static', 'metric' => '1', 'metric_type' => '2', 'route_map' => 'ROUTE-MAP' }
+      },
+      passive_interface => ['eth0','eth1'],
+      passive_interface_exclude => ['eth2','lo']
     }
 
 ## Contributing
