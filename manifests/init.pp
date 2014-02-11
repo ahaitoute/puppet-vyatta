@@ -22,6 +22,16 @@ class vyatta (
     content => template('vyatta/interfaces_trailer.erb'),
     order   => 299,
   }
+  concat::fragment { "policy_header":
+    target  => "${vyatta::configuration}",
+    content => template('vyatta/policy_header.erb'),
+    order   => 300,
+  }
+  concat::fragment { "policy_trailer":
+    target  => "${vyatta::configuration}",
+    content => template('vyatta/policy_trailer.erb'),
+    order   => 399,
+  }
   concat::fragment { "system_header":
     target  => "${vyatta::configuration}",
     content => template('vyatta/system_header.erb'),

@@ -110,6 +110,21 @@ Define the service.
       port => 22
     }
 
+### vyatta::policy
+
+Define the policy.
+
+#### vyatta::policy::prefix_list
+
+    vyatta::policy::prefix_list { 'PREFIX-LIST':
+      rules => {
+        rule1 => { 'rule' => '1', 'action' => permit, 'prefix' => '192.168.0.0/16' },
+        rule2 => { 'rule' => '2', 'action' => permit, 'prefix' => '172.16.0.0/16', 'description' => 'Rule 2 description', 'le' => '16' },
+        rule3 => { 'rule' => '3', 'action' => permit, 'prefix' => '10.0.0.0/16', 'description' => 'Rule 3 description', 'ge' => '16' }
+      },
+      description => 'Prefix-list description'
+    }
+
 ### vyatta::protocols
 
 Define the protocols.
