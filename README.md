@@ -125,6 +125,24 @@ Define the policy.
       description => 'Prefix-list description'
     }
 
+#### vyatta::policy::route_map
+
+    vyatta::policy::route_map { 'ROUTE-MAP':
+      #description => 'Route-map description', #Must still implement it in route_map.erb-template file.
+      rules => {
+        'rule 1' => {
+          'action' => 'permit',
+          'match' => {
+            'ip' => {
+              'address' => {
+                'prefix-list' => 'PREFIX-LIST'
+              }
+            }
+          }
+        }
+      }
+    }
+
 ### vyatta::protocols
 
 Define the protocols.
