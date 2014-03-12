@@ -1,0 +1,1 @@
+    access-list <%= access_list -%> <%= require "json"; JSON.pretty_generate(rules, { :indent => "    " }).tr(':"\,','') %>

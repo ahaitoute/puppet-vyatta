@@ -114,6 +114,25 @@ Define the service.
 
 Define the policy.
 
+#### vyatta::policy::access_list
+
+    vyatta::policy::access_list { '110':
+      #description => 'Access list description', #Must still implement it.
+      rules => {
+        'rule 10' => {
+          action => 'permit',
+          #desctription => 'Rule 1 description.', #Must still implement it.
+          destination => {
+            any => '',
+          },
+          source => {
+            inverse-mask => '0.0.0.63',
+            network => '145.21.240.0'
+          }
+        }
+      }
+    }
+
 #### vyatta::policy::prefix_list
 
     vyatta::policy::prefix_list { 'PREFIX-LIST':
