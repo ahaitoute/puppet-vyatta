@@ -131,11 +131,12 @@ Define the policy.
       #description => 'Route-map description', #Must still implement it in route_map.erb-template file.
       rules => {
         'rule 1' => {
-          'action' => 'permit',
-          'match' => {
-            'ip' => {
-              'address' => {
-                'prefix-list' => 'PREFIX-LIST'
+          action => 'permit',
+          #desctription => 'Rule 1 description.', #Must still implement it.
+          match => {
+            ip => {
+              address => {
+                prefix-list => 'PREFIX-LIST'
               }
             }
           }
