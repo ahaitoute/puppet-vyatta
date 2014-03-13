@@ -194,22 +194,41 @@ Define the protocols.
 #### vyatta::protocols::ospf
 
     vyatta::protocols::ospf { 'ospf':
-      areas => {
-        area1 => { 'area' => '0.0.0.0', 'network' => ['192.168.1.0/24','192.168.2.0/24'] }
-      },
-      parameters => {
-        'abr_type' => 'cisco',
-        'router_id' => '192.168.1.1'
-      },
-      redistributes => {
-        redistribute1 => { 'redistribute' => 'bgp' },
-        redistribute2 => { 'redistribute' => 'connected', 'metric' => '1' },
-        redistribute3 => { 'redistribute' => 'kernel', 'metric_type' => '2' },
-        redistribute4 => { 'redistribute' => 'rip', 'route_map' => 'ROUTE-MAP' },
-        redistribute5 => { 'redistribute' => 'static', 'metric' => '1', 'metric_type' => '2', 'route_map' => 'ROUTE-MAP' }
-      },
-      passive_interface => ['eth0','eth1'],
-      passive_interface_exclude => ['eth2','lo']
+      configuration => {
+        'area 0.0.0.0' => {
+          'network 192.168.1.0/24' => '',
+          'network 192.168.2.0/24' => ''
+        },
+        default-information => {
+          originate => {
+            metric-type => '2'
+          }
+        },
+        parameters => {
+          abr-type => 'cisco',
+          router-id => '192.168.1.1'
+        },
+        'passive-interface default' => '',
+        'passive-interface-exclude eth0' => '',
+        'passive-interface-exclude eth1' => '',
+        redistribute => {
+          bgp => {
+            metric-type => '2',
+          },
+          connected => {
+            metric => '1',
+            metric-type => '2'
+          },
+          rip => {
+            route-map => 'ROUTE-MAP'
+          },
+          static => {
+            metric => '1',
+            metric-type => '2',
+            route-map => 'ROUTE-MAP'
+          }
+        }
+      }
     }
 
 ## Contributing
