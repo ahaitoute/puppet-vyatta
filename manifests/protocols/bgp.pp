@@ -1,10 +1,7 @@
 define vyatta::protocols::bgp (
   $ensure = present,
   $bgp = $name,
-  $neighbors,
-  $networks = undef,
-  $parameters = undef,
-  $redistributes = undef
+  $configuration,
 ) {
   concat::fragment { "bgp_${bgp}":
     target  => "${vyatta::configuration}",

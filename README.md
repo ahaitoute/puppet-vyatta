@@ -170,24 +170,40 @@ Define the protocols.
 #### vyatta::protocols::bgp
 
     vyatta::protocols::bgp { '65000':
-      neighbors => {
-        neighbor1 => { 'neighbor' => '192.168.1.10', 'remote_as' => '65001', update_source => '192.168.1.1' },
-        neighbor2 => { 'neighbor' => '192.168.1.20', 'remote_as' => '65002', update_source => '192.168.1.1' }
-      },
-      networks => {
-        network1 => { 'network' => '192.168.1.0/24', 'backdoor' => true },
-        network2 => { 'network' => '192.168.2.0/24', 'route_map' => 'ROUTE-MAP' },
-        network3 => { 'network' => '192.168.3.0/24' }
-      },
-      parameters => {
-        'router_id' => '192.168.1.1'
-      },
-      redistributes => {
-        redistribute1 => { 'redistribute' => 'connected' },
-        redistribute2 => { 'redistribute' => 'kernel', 'metric' => '1' },
-        redistribute3 => { 'redistribute' => 'ospf', 'route_map' => 'ROUTE-MAP' },
-        redistribute4 => { 'redistribute' => 'rip', 'metric' => '1', 'route_map' => 'ROUTE-MAP' },
-        redistribute5 => { 'redistribute' => 'static' }
+      configuration => {
+        'neighbor 192.168.1.10' => {
+          'remote-as' => '65001',
+          'update-source' => '192.168.1.1'
+        },
+        'neighbor 192.168.1.20' => {
+          'remote-as' => '65002',
+          'update-source' => '192.168.1.1'
+        },
+        'network 192.168.1.0/24' => {
+          backdoor => ''
+        },
+        'network 192.168.2.0/24' => {
+          route-map => 'ROUTE-MAP'
+        },
+        'network 192.168.3.0/24' => {
+        },
+        parameters => {
+          router-id => '192.168.1.1'
+        },
+        redistribute => {
+          connected => {
+            metric => '1',
+          },
+          ospf => {
+          },
+          rip => {
+            route-map => 'ROUTE-MAP'
+          },
+          static => {
+            metric => '1',
+            route-map => 'ROUTE-MAP'
+          }
+        }
       }
     }
 
