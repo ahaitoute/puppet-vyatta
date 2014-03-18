@@ -32,15 +32,26 @@ Define the server.
 Define the interfaces.
 
     vyatta::interfaces::ethernet { 'eth0':
-      address => 'dhcp',
-      hw_id => $macaddress_eth0
+      configuration => {
+        address => 'dhcp',
+        duplex => 'auto',
+        hw-id => $macaddress_eth0,
+        smp_affinity => 'auto',
+        speed => 'auto'
+      }
     }
     vyatta::interfaces::ethernet { 'eth1':
-      address => ['192.168.1.1/24','192.168.2.1/24'],
-      hw_id => $macaddress_eth1
+      configuration => {
+        'address 192.168.1.1/24' => '',
+        'address 192.168.2.1/24' => '',
+        hw-id => $macaddress_eth1,
+        speed => 'auto'
+      }
     }
     vyatta::interfaces::loopback { 'lo':
-      address => '10.0.0.1/32'
+      configuration => {
+        address => '10.0.0.10/32'
+      }
     }
     vyatta::interfaces::openvpn { 'vtun0':
       local_address => '10.4.0.1',
