@@ -1,1 +1,1 @@
-    prefix-list <%= prefix_list -%> <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr(':"\,','') %>
+    prefix-list <%= prefix_list -%> <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr(':"\,','').gsub(" \\",' "').gsub("\\\n","\"\n") %>

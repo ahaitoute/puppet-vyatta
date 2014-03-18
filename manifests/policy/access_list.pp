@@ -1,8 +1,7 @@
 define vyatta::policy::access_list (
   $ensure = present,
-  $description = undef,
   $access_list = $name,
-  $rules
+  $configuration
 ) {
   concat::fragment { "access_list_${access_list}":
     target  => "${vyatta::configuration}",
