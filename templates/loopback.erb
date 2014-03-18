@@ -1,4 +1,1 @@
-    loopback <%= loopback %> {
-<% Array(address).each do |item| %>        address <%= item %>
-<% end -%>
-    }
+loopback <%= loopback %> <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr('"\,','').gsub(" \\",' "').gsub("\\\n","\"\n").gsub(': ',' ') %>

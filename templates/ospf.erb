@@ -1,1 +1,1 @@
-    ospf <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr(':"\,','').gsub(" \\",' "').gsub("\\\n","\"\n") %>
+ospf <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr(':"\,','').gsub(" \\",' "').gsub("\\\n","\"\n") %>

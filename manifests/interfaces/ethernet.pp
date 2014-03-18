@@ -1,11 +1,7 @@
 define vyatta::interfaces::ethernet (
   $ensure = present,
-  $ethernet = $name,
-  $address = '',
-  $duplex = 'auto',
-  $hw_id,
-  $smp_affinity = 'auto',
-  $speed = 'auto'
+  $configuration,
+  $ethernet = $name
 ) {
 
   include vyatta

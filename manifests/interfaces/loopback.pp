@@ -1,7 +1,7 @@
 define vyatta::interfaces::loopback (
   $ensure = present,
-  $loopback = $name,
-  $address = '',
+  $configuration,
+  $loopback = $name
 ) {
   concat::fragment { "loopback_${loopback}":
     target  => "${vyatta::configuration}",

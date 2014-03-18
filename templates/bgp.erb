@@ -1,1 +1,1 @@
-    bgp <%= bgp -%> <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr(':"\,','').gsub(" \\",' "').gsub("\\\n","\"\n") %>
+bgp <%= bgp -%> <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr(':"\,','').gsub(" \\",' "').gsub("\\\n","\"\n") %>

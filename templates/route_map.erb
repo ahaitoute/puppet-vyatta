@@ -1,1 +1,1 @@
-    route-map <%= route_map -%> <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr(':"\,','').gsub(" \\",' "').gsub("\\\n","\"\n") %>
+route-map <%= route_map -%> <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr(':"\,','').gsub(" \\",' "').gsub("\\\n","\"\n") %>

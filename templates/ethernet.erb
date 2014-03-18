@@ -1,8 +1,1 @@
-    ethernet <%= ethernet %> {
-<% Array(address).each do |item| %>        address <%= item %>
-<% end -%>
-        duplex <%= duplex %>
-        hw-id <%= hw_id %>
-        smp_affinity <%= smp_affinity %>
-        speed <%= speed %>
-    }
+ethernet <%= ethernet %> <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr('"\,','').gsub(" \\",' "').gsub("\\\n","\"\n").gsub(': ',' ') %>
