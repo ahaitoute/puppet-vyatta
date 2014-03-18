@@ -117,11 +117,11 @@ Define the policy.
 #### vyatta::policy::access_list
 
     vyatta::policy::access_list { '110':
-      #description => 'Access list description', #Must still implement it.
-      rules => {
+      configuration => {
+        description => '"Access list description"',
         'rule 10' => {
           action => 'permit',
-          #desctription => 'Rule 1 description.', #Must still implement it.
+          description => '"Rule 10 description."',
           destination => {
             any => '',
           },
@@ -136,22 +136,34 @@ Define the policy.
 #### vyatta::policy::prefix_list
 
     vyatta::policy::prefix_list { 'PREFIX-LIST':
-      rules => {
-        rule1 => { 'rule' => '1', 'action' => permit, 'prefix' => '192.168.0.0/16' },
-        rule2 => { 'rule' => '2', 'action' => permit, 'prefix' => '172.16.0.0/16', 'description' => 'Rule 2 description', 'le' => '16' },
-        rule3 => { 'rule' => '3', 'action' => permit, 'prefix' => '10.0.0.0/16', 'description' => 'Rule 3 description', 'ge' => '16' }
-      },
-      description => 'Prefix-list description'
+      configuration => {
+        'rule 1' => {
+          action => 'permit',
+       	  prefix => '192.168.0.0/16'
+        },
+        'rule 2' => {
+          action => 'permit',
+          description => '"Rule 2 description."',
+          le => '15',
+          prefix => '172.16.0.0/16'
+        },
+        'rule 3' => {
+          action => 'permit',
+          description => '"Rule 3 description."',
+          le => '17',
+          prefix => '10.10.0.0/16'
+        },
+      }
     }
 
 #### vyatta::policy::route_map
 
     vyatta::policy::route_map { 'ROUTE-MAP':
-      #description => 'Route-map description', #Must still implement it in route_map.erb-template file.
-      rules => {
+      configuration => {
+        description => '"Route-map description."',
         'rule 1' => {
           action => 'permit',
-          #desctription => 'Rule 1 description.', #Must still implement it.
+          description => '"Rule 1 description."',
           match => {
             ip => {
               address => {
