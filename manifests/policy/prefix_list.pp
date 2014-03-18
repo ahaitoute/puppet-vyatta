@@ -1,8 +1,7 @@
 define vyatta::policy::prefix_list (
   $ensure = present,
-  $description = undef,
+  $configuration,
   $prefix_list = $name,
-  $rules
 ) {
   concat::fragment { "prefix_list_${prefix_list}":
     target  => "${vyatta::configuration}",
