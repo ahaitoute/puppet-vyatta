@@ -1,8 +1,7 @@
 define vyatta::policy::route_map (
   $ensure = present,
-  $description = undef,
+  $configuration,
   $route_map = $name,
-  $rules
 ) {
   concat::fragment { "route_map_${route_map}":
     target  => "${vyatta::configuration}",
