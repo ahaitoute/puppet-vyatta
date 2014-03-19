@@ -1,7 +1,7 @@
 define vyatta::service::ssh (
   $ensure = present,
+  $configuration = {},
   $ssh = $name,
-  $port = 22
 ) {
   concat::fragment { "ssh_${ssh}":
     target  => "${vyatta::configuration}",

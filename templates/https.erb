@@ -1,2 +1,1 @@
-    https {
-    }
+https <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr('"\,','').gsub(" \\",' "').gsub("\\\n","\"\n").gsub(': ',' ') %>
