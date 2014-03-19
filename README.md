@@ -61,10 +61,12 @@ Define the interfaces.
         remote-address => '10.4.0.2',
         remote-host => '192.168.1.2',
         remote-port => '5001',
-        ca-cert-file => '/config/auth/ca.crt',
-        cert-file => '/config/auth/vyatta.crt',
-        key-file => '/config/auth/vyatta.key',
-        role => 'active'
+        tls => {
+          ca-cert-file => '/config/auth/ca.crt',
+          cert-file => '/config/auth/vyatta.crt',
+          key-file => '/config/auth/vyatta.key',
+          role => 'active'
+        }
       }
     }
 
