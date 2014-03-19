@@ -124,17 +124,26 @@ Define the system.
         }
       }
     }
-    vyatta::system::syslog::global { 'all':
-      level => 'notice'
-    }
-    vyatta::system::syslog::global { 'protocols':
-      level => 'debug'
-    }
-    vyatta::system::syslog::file { 'kernel-log':
-      archive_files => 10,
-      archive_size => 10485760,
-      facility => 'kern',
-      facility_level => 'info'
+    vyatta::system::syslog { 'syslog':
+      configuration => {
+        'file kernel-log' => {
+          archive => {
+            files => '10',
+            size => '10485760'
+          },
+          'facility kern' => {
+            level => 'info'
+          }
+        },
+        global => {
+          'facility all' => {
+            level => 'notice'
+          },
+          'facility protocols' => {
+            level => 'debug'
+          }
+        }
+      }
     }
 
 ### vyatta::service
