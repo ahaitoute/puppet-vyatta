@@ -21,10 +21,7 @@ Clone this repo to your Puppet modules directory
 Define the server.
 
     class { 'vyatta':
-      configuration => '/home/vyatta/configuration',
-      gateway_address => '10.0.2.2',
-      host_name => 'vyatta',
-      time_zone => 'Europe/Amsterdam'
+      configuration_file => '/home/vyatta/configuration',
     }
 
 ### vyatta::interfaces
@@ -73,6 +70,14 @@ Define the interfaces.
 ### vyatta::system
 
 Define the system.
+
+    vyatta::system::system { 'vyatta':
+      configuration => {
+        gateway-address => '10.0.2.2',
+        host-name => 'vyatta',
+        time-zone => 'Europe/Amsterdam'
+      }
+    }
 
     vyatta::system::login { 'login':
       configuration => {
