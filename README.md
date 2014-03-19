@@ -94,11 +94,16 @@ Define the system.
         }
       }
     }
-    vyatta::system::ntp { '0.vyatta.pool.ntp.org':
-    }
-    vyatta::system::ntp { '1.vyatta.pool.ntp.org':
-    }
-    vyatta::system::ntp { '2.vyatta.pool.ntp.org':
+    vyatta::system::ntp { 'ntp':
+      configuration => {
+        'server 0.vyatta.pool.ntp.org' => {
+          prefer => ''
+        },
+        'server 1.vyatta.pool.ntp.org' => {
+        },
+        'server 2.vyatta.pool.ntp.org' => {
+        },
+      }
     }
     vyatta::system::package { 'community':
       components => 'main',
