@@ -1,25 +1,9 @@
 define vyatta::system::login (
   $ensure = present,
-  $user = $name,
-  $encrypted_password,
-  $key_name = undef,
-  $key_content = undef,
-  $key_type = undef,
-  $level,
+  $configuration,
+  $login = $name,
 ) {
-  if ! (defined(Concat::Fragment['login_header'])) {
-    concat::fragment { 'login_header':
-      target  => "${vyatta::configuration}",
-      content => template('vyatta/login_header.erb'),
-      order   => 501,
-    }
-    concat::fragment { 'login_trailer':
-      target  => "${vyatta::configuration}",
-      content => template('vyatta/login_trailer.erb'),
-      order   => 503,
-    }
-  }
-  concat::fragment { "login_${user}":
+  concat::fragment { "login_${login}":
     target  => "${vyatta::configuration}",
     content => template('vyatta/login.erb'),
     order   => 502,

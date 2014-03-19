@@ -1,12 +1,1 @@
-        user <%= user %> {
-            authentication {
-                encrypted-password <%= encrypted_password %>
-<% if @key_name -%>
-                public-keys <%= key_name %> {
-                    key <%= key_content %>
-                    type <%= key_type %>
-                }
-<% end -%>
-            }
-            level <%= level %>
-        }
+login <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr('"\,','').gsub(" \\",' "').gsub("\\\n","\"\n").gsub(': ',' ') %>

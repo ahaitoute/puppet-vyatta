@@ -74,12 +74,25 @@ Define the interfaces.
 
 Define the system.
 
-    vyatta::system::login { 'vyatta':
-      encrypted_password => '$6$GUyv4c3u7RZwjhRx$44.RQbxRI.nMEeV.ZJx61K7xMYQpAmOR8VjdWd3Wkz7TuG44eeygBoG2u9B3Jv8Cbfr0i.JTTwnrC5MDUkclI/', #Password: vyatta
-      level => 'admin',
-      key_name => 'user@host',
-      key_content => 'Your public key',
-      key_type => 'ssh-rsa'
+    vyatta::system::login { 'login':
+      configuration => {
+        'user vyatta' => {
+          authentication => {
+            encrypted-password => '$6$GUyv4c3u7RZwjhRx$44.RQbxRI.nMEeV.ZJx61K7xMYQpAmOR8VjdWd3Wkz7TuG44eeygBoG2u9B3Jv8Cbfr0i.JTTwnrC5MDUkclI/', #Password: vyatta
+            'public-keys user@host' => {
+              key => 'Your public key',
+              type => 'ssh-rsa'
+            }
+          },
+          level => 'admin'
+        },
+        'user operator' => {
+          authentication => {
+            encrypted-password => '$6$GUyv4c3u7RZwjhRx$44.RQbxRI.nMEeV.ZJx61K7xMYQpAmOR8VjdWd3Wkz7TuG44eeygBoG2u9B3Jv8Cbfr0i.JTTwnrC5MDUkclI/', #Password: vyatta
+          },
+          level => 'operator'
+        }
+      }
     }
     vyatta::system::ntp { '0.vyatta.pool.ntp.org':
     }
