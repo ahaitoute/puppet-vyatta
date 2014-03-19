@@ -19,7 +19,7 @@ class vyatta (
   }
   concat::fragment { "interfaces_trailer":
     target  => "${vyatta::configuration}",
-    content => template('vyatta/interfaces_trailer.erb'),
+    content => template('vyatta/trailer.erb'),
     order   => 299,
   }
   concat::fragment { "policy_header":
@@ -29,7 +29,7 @@ class vyatta (
   }
   concat::fragment { "policy_trailer":
     target  => "${vyatta::configuration}",
-    content => template('vyatta/policy_trailer.erb'),
+    content => template('vyatta/trailer.erb'),
     order   => 399,
   }
   concat::fragment { "system_header":
@@ -39,7 +39,7 @@ class vyatta (
   }
   concat::fragment { "system_trailer":
     target  => "${vyatta::configuration}",
-    content => template('vyatta/system_trailer.erb'),
+    content => template('vyatta/trailer.erb'),
     order   => 599,
   }
   concat::fragment { "service_header":
@@ -49,7 +49,7 @@ class vyatta (
   }
   concat::fragment { "service_trailer":
     target  => "${vyatta::configuration}",
-    content => template('vyatta/service_trailer.erb'),
+    content => template('vyatta/trailer.erb'),
     order   => 499,
   }
   concat::fragment { "protocols_header":
@@ -59,7 +59,7 @@ class vyatta (
   }
   concat::fragment { "protocols_trailer":
     target  => "${vyatta::configuration}",
-    content => template('vyatta/protocols_trailer.erb'),
+    content => template('vyatta/trailer.erb'),
     order   => 699,
   }
   file { "${script_dir}/vyatta_end_session.sh":
