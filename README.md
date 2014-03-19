@@ -105,20 +105,24 @@ Define the system.
         },
       }
     }
-    vyatta::system::package { 'community':
-      components => 'main',
-      distribution => 'stable',
-      url => 'http://packages.vyatta.com/vyatta',
-    }
-    vyatta::system::package { 'puppet':
-      components => 'main dependencies',
-      distribution => 'stable',
-      url => 'http://apt.puppetlabs.com',
-    }
-    vyatta::system::package { 'squeeze':
-      components => 'main',
-      distribution => 'stable',
-      url => 'http://ftp.nl.debian.org/debian',
+    vyatta::system::package { 'package':
+      configuration => {
+        'repository community' => {
+          components => 'main',
+          distribution => 'stable',
+          url => 'http://packages.vyatta.com/vyatta'
+        },
+        'repository puppet' => {
+          components => '"main dependencies"',
+       	  distribution => 'stable',
+          url => 'http://apt.puppetlabs.com'
+        },
+        'repository squeeze' => {
+          components => 'main',
+          distribution => 'stable',
+          url => 'http://ftp.nl.debian.org/debian'
+        }
+      }
     }
     vyatta::system::syslog::global { 'all':
       level => 'notice'

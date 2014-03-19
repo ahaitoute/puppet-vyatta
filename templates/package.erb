@@ -1,8 +1,1 @@
-        repository <%= repository %> {
-            components "<%= components %>"
-            distribution <%= distribution %>
-<% if !username.empty? and !password.empty? %>            username <%= username %>
-            password "<%= password %>"
-<% end -%>
-            url <%= url %>
-        }
+package <%= require "json"; JSON.pretty_generate(configuration, { :indent => "    " }).tr('"\,','').gsub(" \\",' "').gsub("\\\n","\"\n").gsub(': ',' ') %>
