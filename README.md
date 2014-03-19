@@ -122,7 +122,9 @@ Define the service.
     vyatta::service::https { 'https':
     }
     vyatta::service::ssh { 'ssh':
-      port => 22
+      configuration => {
+        port => 22
+      }
     }
 
 ### vyatta::policy
