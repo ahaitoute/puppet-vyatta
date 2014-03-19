@@ -4,7 +4,7 @@ define vyatta::system::login (
   $login = $name,
 ) {
   concat::fragment { "login_${login}":
-    target  => "${vyatta::configuration}",
+    target  => "${vyatta::configuration_file}",
     content => template('vyatta/login.erb'),
     order   => 502,
   }

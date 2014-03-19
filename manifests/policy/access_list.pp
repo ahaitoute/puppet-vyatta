@@ -4,7 +4,7 @@ define vyatta::policy::access_list (
   $configuration
 ) {
   concat::fragment { "access_list_${access_list}":
-    target  => "${vyatta::configuration}",
+    target  => "${vyatta::configuration_file}",
     content => template('vyatta/access_list.erb'),
     order   => 301,
   }

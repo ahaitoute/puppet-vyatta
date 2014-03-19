@@ -4,7 +4,7 @@ define vyatta::interfaces::loopback (
   $loopback = $name
 ) {
   concat::fragment { "loopback_${loopback}":
-    target  => "${vyatta::configuration}",
+    target  => "${vyatta::configuration_file}",
     content => template('vyatta/loopback.erb'),
     order   => 201,
   }

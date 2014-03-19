@@ -4,7 +4,7 @@ define vyatta::system::package (
   $package = $name,
 ) {
   concat::fragment { "package_${package}":
-    target  => "${vyatta::configuration}",
+    target  => "${vyatta::configuration_file}",
     content => template('vyatta/package.erb'),
     order   => 509,
   }
