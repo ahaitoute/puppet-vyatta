@@ -79,6 +79,15 @@ Define the system.
       }
     }
 
+    vyatta::system::config-management { 'config-management':
+      configuration => {
+        commit-archive => {
+          location => "tftp://<ip-address tfp-server>/$hostname"
+        },
+        commit-revisions => '20'
+      }
+    }
+
     vyatta::system::login { 'login':
       configuration => {
         'user vyatta' => {
