@@ -90,6 +90,7 @@ class vyatta (
     source => 'puppet:///modules/vyatta/vyatta_snippet.sh'
   }
   exec { "vyatta_loadFile.sh ${configuration_file}":
+    cwd         => $script_dir,
     path        => $script_dir,
     environment => ["vyatta_prefix=${vyatta_prefix}","vyatta_htmldir=${vyatta_prefix}/share/html","vyatta_datadir=${vyatta_prefix}/share","vyatta_op_templates=${vyatta_prefix}/share/vyatta-op/templates","vyatta_sysconfdir=${vyatta_prefix}/etc","vyatta_sharedstatedir=${vyatta_prefix}/com","vyatta_sbindir=${vyatta_prefix}/sbin","vyatta_cfg_templates=${vyatta_prefix}/share/vyatta-cfg/templates",'VYATTA_CFG_GROUP_NAME=vyattacfg',"vyatta_bindir=${vyatta_prefix}/bin","VYATTA_USER_LEVEL_DIR=${vyatta_prefix}/etc/shell/level/admin","vyatta_libdir=${vyatta_prefix}/lib","vyatta_localstatedir=${vyatta_prefix}/var","vyatta_libexecdir=${vyatta_prefix}/libexec","vyatta_datarootdir=${vyatta_prefix}/share","vyatta_configdir=${vyatta_prefix}/config","vyatta_infodir=${vyatta_prefix}/share/info","vyatta_localedir=${vyatta_prefix}/share/locale"],
     logoutput   => true,
