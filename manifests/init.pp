@@ -59,6 +59,16 @@ class vyatta (
     content => template('vyatta/trailer.erb'),
     order   => 699,
   }
+  concat::fragment { "vpn_header":
+    target  => "${vyatta::configuration_file}",
+    content => template('vyatta/vpn_header.erb'),
+    order   => 700,
+  }
+  concat::fragment { "vpn_trailer":
+    target  => "${vyatta::configuration_file}",
+    content => template('vyatta/trailer.erb'),
+    order   => 799,
+  }
   file { "${script_dir}/vyatta_end_session.sh":
     ensure => present,
     owner  => root,
